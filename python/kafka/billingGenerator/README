@@ -1,9 +1,8 @@
-These scripts are intended for testing/research purposes only. 
+DISCLAIMER: These scripts are written in python3 and intended for dev/testing/research purposes only. I cannot be held accountable for any damage
+you might cause by running these scripts!
 
-The op_generator.py script creates operators, which are used in the billing_generator.py script.
+Billing generator writes avro data to a kafka topic called billing.
 
-Billing generator writes avro data to a kafka topic.
+This is slimmed down version of a script I used for generating random billing data, it omits the contact map field originally in the avro schema. Thus it may or may not error
+when executed as I have not re-tested without these changes. Please let me know if you encounter any issues.
 
-1. Configure and run the op generator script
-
-2. Configure and run the billing generator script
