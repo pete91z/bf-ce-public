@@ -1,0 +1,8 @@
+{"namespace": "billing_key.avro",
+ "type": "record",
+ "name": "billing_key",
+ "fields": [
+      {"name": "Key", "type": "string"}
+ ]
+} 
+

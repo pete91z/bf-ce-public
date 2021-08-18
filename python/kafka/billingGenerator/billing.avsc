@@ -1,0 +1,20 @@
+{"namespace": "billing.avro",
+ "type": "record",
+ "name": "billing",
+ "fields": [
+      {"name": "BILLING_ID", "type": "string"},
+      {"name": "CATEGORY", "type": "string"},
+      {"name": "ORIGIN", "type": {"type": "record", 
+                                  "name":"origin", 
+                                  "fields": [
+                                             {"name": "SITE", "type": "string"},
+                                             {"name": "OPERATOR_ID", "type": "string"}
+                                            ]
+                                 }
+      },
+      {"name": "MOVEMENT_TYPE", "type": "string"},
+      {"name": "VALUE", "type": "float"},
+      {"name": "TS", "type": "int"}
+ ]
+} 
+

@@ -1,0 +1,9 @@
+These scripts are intended for testing/research purposes only. 
+
+The op_generator.py script creates operators, which are used in the billing_generator.py script.
+
+Billing generator writes avro data to a kafka topic.
+
+1. Configure and run the op generator script
+
+2. Configure and run the billing generator script
