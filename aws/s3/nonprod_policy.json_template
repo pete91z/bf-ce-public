@@ -1,0 +1,40 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "bcklist",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::<AwsAccountId>:user/<IAMUser>"
+            },
+            "Action": "s3:ListBucket",
+            "Resource": "arn:aws:s3:::<s3Bucket>",
+            "Condition": {
+                "IpAddress": {
+                    "aws:SourceIp": ""
+                },
+		"StringEquals": {
+		    "s3:prefix": ""
+		}
+            }
+        },
+        {
+            "Sid": "bckcontent",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::<AwsAccountId>:user/<IAMUser>"
+            },
+            "Action": [
+                "s3:getobject",
+		"s3:putObject",
+		"s3:deleteObject"
+            ],
+            "Resource": "arn:aws:s3:::<s3Bucket>/*",
+            "Condition": {
+                "IpAddress": {
+                    "aws:SourceIp": ""
+                }
+            }
+        }
+    ]
+}
