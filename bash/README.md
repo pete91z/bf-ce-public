@@ -1,9 +1,11 @@
 taillog
 =======
 
-The taillog.sh script can be used to monitor a text log file including/excluding text patterns of your choice. The eligible output is written to a specified file.
+* The taillog.sh script can be used to continuously monitor a text log file including/excluding text patterns of your choice. The eligible output is written to a specified file.
 
-An instance identifier is specifed to allow multiple instances of taillog.sh to run concurrently and hence multiple files to be monitored.
+* An instance identifier is specifed to allow multiple instances of taillog.sh to run concurrently and hence multiple files to be monitored.
+
+* Can be started via cron - if you put an entry to started every minutes it will check to see if it is already running and if so will exit.
 
 Usage:
 
