@@ -9,7 +9,7 @@ taillog
 
 Usage:
 
-./taillog.sh \<target file for monitoring\> <includefile> <excludefile> <target outputfile> <instance identifier>
+./taillog.sh \<target file for monitoring\> \<includefile\> \<excludefile\> \<target outputfile\> \<instance identifier\>
 
 e.g. to monitor an oracle alert log
 
