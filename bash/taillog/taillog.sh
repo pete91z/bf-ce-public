@@ -2,7 +2,7 @@
 #
 # Use this script to tail a log file and summarise errors out to a log buffer file.
 # Usage:
-# taillog.sh <target log file for monitoring> <include pattern file> <skip pattern file> <log buffer file>
+# taillog.sh <target log file for monitoring> <include pattern file> <skip pattern file> <log buffer file> <instance identifier>
 #
 DEFINSTANCE=$$
 if [ "$1" == "" ]
