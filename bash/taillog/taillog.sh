@@ -40,6 +40,13 @@ export INCLOGFILE=$2
 export SKPLOGFILE=$3
 export BUFLOGFILE=$4
 export INSTANCE=$5
+if [[ ! -e $MONLOGFILE ]]
+then
+ echo "File does not exist"
+ exit 2
+else
+ FSTOP=$(wc -l ${MONLOGFILE} |cut -d' ' -f1)
+fi
 if [[ -e /tmp/taillogrunning_${INSTANCE} ]]
 then
  INSTPID=`cat /tmp/taillogrunning_${INSTANCE}`
@@ -50,13 +57,15 @@ then
  else
   touch /tmp/taillogrunning_${INSTANCE}
   echo $DEFINSTANCE>/tmp/taillogrunning_${INSTANCE}
-  tail -f $MONLOGFILE|egrep --line-buffered -f $INCLOGFILE |egrep --line-buffered -v -f $SKPLOGFILE |awk '{print ENVIRON["INSTANCE"]"|"strftime("%Y-%m-%d %H:%M:%S")"|"$0; fflush()}'|tee $BUFLOGFILE 2>&1
+  let FSTART=FSTOP+1
+  tail -n +$FSTART -f $MONLOGFILE|egrep --line-buffered -f $INCLOGFILE |egrep --line-buffered -v -f $SKPLOGFILE |awk '{print ENVIRON["INSTANCE"]"|"strftime("%Y-%m-%d %H:%M:%S")"|"$0; fflush()}'|tee $BUFLOGFILE 2>&1
  fi
 else
  touch /tmp/taillogrunning_${INSTANCE}
  echo $DEFINSTANCE >/tmp/taillogrunning_${INSTANCE}
  touch $BUFLOGFILE
- tail -f $MONLOGFILE|egrep --line-buffered -f $INCLOGFILE |egrep --line-buffered -v -f $SKPLOGFILE |awk '{print ENVIRON["INSTANCE"]"|"strftime("%Y-%m-%d %H:%M:%S")"|"$0; fflush()}'|tee $BUFLOGFILE 2>&1
+ let FSTART=FSTOP+1
+ tail -n +$FSTART -f $MONLOGFILE|egrep --line-buffered -f $INCLOGFILE |egrep --line-buffered -v -f $SKPLOGFILE |awk '{print ENVIRON["INSTANCE"]"|"strftime("%Y-%m-%d %H:%M:%S")"|"$0; fflush()}'|tee $BUFLOGFILE 2>&1
 fi
 
 
