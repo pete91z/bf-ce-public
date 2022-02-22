@@ -52,7 +52,7 @@ then
   echo "Include file does not exist"
   exit 2
 fi
-if [[ ! -e SKPLOGFILE ]]
+if [[ ! -e $SKPLOGFILE ]]
 then
    echo "Exclude file does not exist"
    exit 2
