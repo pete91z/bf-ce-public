@@ -42,7 +42,7 @@ export BUFLOGFILE=$4
 export INSTANCE=$5
 if [[ ! -e $MONLOGFILE ]]
 then
- echo "File does not exist"
+ echo "Monitored File does not exist"
  exit 2
 else
  FSTOP=$(wc -l ${MONLOGFILE} |cut -d' ' -f1)
