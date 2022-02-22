@@ -47,6 +47,16 @@ then
 else
  FSTOP=$(wc -l ${MONLOGFILE} |cut -d' ' -f1)
 fi
+if [[ ! -e $INCLOGFILE ]]
+then
+  echo "Include file does not exist"
+  exit 2
+fi
+if [[ ! -e SKPLOGFILE ]]
+then
+   echo "Exclude file does not exist"
+   exit 2
+fi
 if [[ -e /tmp/taillogrunning_${INSTANCE} ]]
 then
  INSTPID=`cat /tmp/taillogrunning_${INSTANCE}`
